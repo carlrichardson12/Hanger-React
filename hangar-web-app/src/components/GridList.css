@@ -1,0 +1,8 @@
+.grid-container {
+    .the-flexer {
+        display: flex;
+        flex-direction: row;
+        
+
+    }
+}

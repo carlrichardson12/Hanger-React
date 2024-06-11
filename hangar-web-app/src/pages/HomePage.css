@@ -1,0 +1,31 @@
+.Home-page-container {
+    .Title-container {
+        background-image: url("https://media.istockphoto.com/id/576933770/photo/aircraft-hanger-door-open-car-stage-3d-illustration.jpg?s=1024x1024&w=is&k=20&c=zUzkueePC_fJGsHd1tu0EwvUAr4EApUkBgRjMQQV5_g=");
+        height: 400px;       
+        .Title {
+            padding-top: 75px;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            font-weight: 600;
+            color: black;
+            .Slogan {
+                font-size: 1rem;
+                font-style: italic;
+            }
+        }
+    }
+
+    .Search-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        .MuiAutocomplete-root {
+            background-color: #cccccc !important;
+        }
+        /* Button {
+            margin-top: 12px !important;
+            margin-left: 10px !important;
+        } */
+     
+    }
+}
