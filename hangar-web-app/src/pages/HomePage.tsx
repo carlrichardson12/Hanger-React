@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './HomePage.css';
 import { Autocomplete, Button, TextField } from '@mui/material';
+import GridList from '../components/GridList';
 
 export function HomePage() {
     const cities1 = [
@@ -55,6 +56,7 @@ export function HomePage() {
                     <Button variant="contained">Search</Button>
                 </div>
             </div>
+            <GridList/>
         </div>
     );
 }
