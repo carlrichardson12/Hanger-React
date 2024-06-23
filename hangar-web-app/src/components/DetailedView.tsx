@@ -3,12 +3,7 @@ import { useState } from "react";
 
 
 function DetailedView(props: any) {
-    const [hangarDetail, seHangarDetails] =  useState({
-        image:'',
-        title: 'Most likely the best hangar you have ever seen',
-        location: 'Atlanta, GA'
-
-    } as HangarDetails)
+    const hangarDetail = props.hangarDetail
 
     const gobackClicked = () => {
         props.setIsDetailedViews(!props.isDetailedView)
