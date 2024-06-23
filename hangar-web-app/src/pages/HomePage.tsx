@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './HomePage.css';
 import { Autocomplete, Button, TextField } from '@mui/material';
 import GridList from '../components/GridList';
+import DetailedView from '../components/DetailedView';
 
 export function HomePage() {
     const cities1 = [
@@ -29,14 +30,14 @@ export function HomePage() {
 
     const [cities, setCities] = useState(cities1);
     const [states, setStates] = useState(states1);
-
+    const [isDetailedView, setIsDetailedViews] = useState(false)
     return (
         <div className='Home-page-container'>
             <div className='Title-container'>
                 <div className='Title'>
                     Plane Hangars
                     <div className='Slogan'>
-                    Where flight begins and ends...
+                        Where flight begins and ends...
                     </div>
                 </div>
                 <div className='Search-container'>
@@ -56,7 +57,18 @@ export function HomePage() {
                     <Button variant="contained">Search</Button>
                 </div>
             </div>
-            <GridList/>
+
+            {/* figure out how to conditionally display */}
+            <GridList
+                isDetailedView={isDetailedView}
+                setIsDetailedViews={setIsDetailedViews}
+                shouldShow={isDetailedView}
+            />
+            <DetailedView
+                isDetailedView={isDetailedView}
+                setIsDetailedViews={setIsDetailedViews}
+                shouldShow={isDetailedView}
+            />
         </div>
     );
 }
