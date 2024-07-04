@@ -3,6 +3,7 @@ import './HomePage.css';
 import { Autocomplete, Button, TextField } from '@mui/material';
 import GridList from '../components/GridList';
 import DetailedView, { HangarDetails } from '../components/DetailedView';
+import { statesArray } from '../resources/resources';
 
 export function HomePage() {
 
@@ -84,44 +85,40 @@ export function HomePage() {
         { label: 'Alberquere' }
     ]
 
-    const states1 = [
-        { label: 'GA' },
-        { label: 'FL' },
-        { label: 'MA' },
-        { label: 'VA' },
-        { label: 'PA' },
-        { label: 'NM' },
-    ]
-
     const [cities, setCities] = useState(cities1);
-    const [states, setStates] = useState(states1);
+    const [states, setStates] = useState(statesArray);
     const [isDetailedView, setIsDetailedViews] = useState(false)
     const [hangarDetails, setHangarDetails] = useState({} as HangarDetails)
+    const [hangarDetailsArray, setHangarDetailsArray] = useState([] as HangarDetails[])
     const [hangarId, setHangarId] = useState(0)
 
+    // useEffect(())
 
 
         useEffect(() => {
             //uncomment when api ready
-            // fetch('https://api.example.com/data')
-            // .then(response => response.json())
-            // .then(json => hangarDetailSetter(json))
-            // .catch(error => console.error(error));
+            fetch('http://localhost:8001/hangar/details/all')
+            .then(response => response.json())
+            .then((json) => {
+                console.log(json)
+                setHangarDetailsArray(json)
+            })
+            .catch(error => console.error(error));
 
-            setHangarDetails(hangarDetailSetter(hangarId));
+            // setHangarDetails(hangarDetailSetter(hangarId));
 
-        }, [hangarId])
+        }, [hangarDetails])
 
-    function hangarDetailSetter(id: number): HangarDetails {
-        const listingToConvert =  avalibleListings[id]
-        const hangarDetails = { 
-            location: 'Atlanta, GA',
-            image: listingToConvert.imgUrl,
-            title: listingToConvert.title,
-            hangarDesc: listingToConvert.description
-        } as HangarDetails
-        return hangarDetails
-    }
+    // function hangarDetailSetter(id: number): HangarDetails {
+    //     const listingToConvert =  avalibleListings[id]
+    //     const hangarDetails = { 
+    //         location: 'Atlanta, GA',
+    //         image: listingToConvert.imgUrl,
+    //         title: listingToConvert.title,
+    //         hangarDesc: listingToConvert.description
+    //     } as HangarDetails
+    //     return hangarDetails
+    // }
 
     return (
         <div className='Home-page-container'>
@@ -155,7 +152,7 @@ export function HomePage() {
                 isDetailedView={isDetailedView}
                 setIsDetailedViews={setIsDetailedViews}
                 shouldShow={isDetailedView}
-                avalibleListings={avalibleListings}
+                avalibleListings={hangarDetailsArray}
                 setHangarId={setHangarId}
             />
             <DetailedView
